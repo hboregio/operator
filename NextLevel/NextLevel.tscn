@@ -1,0 +1,311 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/elevator_speed.png" type="Texture" id=1]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Shaders/blur.shader" type="Shader" id=3]
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NextLevel/NextLevel.gd" type="Script" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/blur_amount = 2.5
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 3
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+outline_size = 3
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 34
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+
+func _on_BackButton_clicked() -> void:
+	get_tree().change_scene(\"res://MainMenu/MainMenu.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=8]
+size = 34
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+
+func _on_BackButton_clicked() -> void:
+	get_tree().change_scene(\"res://MainMenu/MainMenu.tscn\")
+"
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource( 5 )
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+color = Color( 1, 1, 1, 0.811765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -267.975
+margin_right = 121.0
+margin_bottom = -207.975
+custom_fonts/font = SubResource( 2 )
+text = "Day 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -141.0
+margin_top = -201.046
+margin_right = 141.0
+margin_bottom = -141.046
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Pick a power-up for the next day"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -217.619
+margin_top = 0.110168
+margin_right = -217.619
+margin_bottom = 0.110168
+rect_pivot_offset = Vector2( 0, 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpSprite" type="Button" parent="Left"]
+modulate = Color( 0.266667, 0.192157, 0.2, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.0
+margin_top = -19.0
+margin_right = -128.0
+margin_bottom = 19.0
+icon = ExtResource( 1 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpTitle" type="Label" parent="Left"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -18.0
+margin_right = 118.5
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 4 )
+text = "Boarding speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpDescription" type="Label" parent="Left"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = 34.0
+margin_right = 118.5
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Passengers will now enter the elevator 10% faster"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Left"]
+margin_left = -118.5
+margin_top = 132.0
+margin_right = 25.5
+margin_bottom = 173.0
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+
+[node name="Continue" parent="Left" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -109.5
+margin_top = 117.0
+margin_right = 15.5
+margin_bottom = 187.0
+rect_pivot_offset = Vector2( 62.5, 35 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Select"
+icon = null
+script = SubResource( 7 )
+
+[node name="Right" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 264.09
+margin_top = 0.110168
+margin_right = 264.09
+margin_bottom = 0.110168
+rect_pivot_offset = Vector2( 0, 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpSprite" type="Button" parent="Right"]
+modulate = Color( 0.266667, 0.192157, 0.2, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.0
+margin_top = -19.0
+margin_right = -128.0
+margin_bottom = 19.0
+icon = ExtResource( 1 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpTitle" type="Label" parent="Right"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = -18.0
+margin_right = 118.5
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 4 )
+text = "Boarding speed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerUpDescription" type="Label" parent="Right"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.5
+margin_top = 34.0
+margin_right = 118.5
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Passengers will now enter the elevator 10% faster"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Right"]
+margin_left = -118.5
+margin_top = 132.0
+margin_right = 25.5
+margin_bottom = 173.0
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue2" parent="Right" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.5
+margin_top = 117.0
+margin_right = 17.5
+margin_bottom = 187.0
+rect_pivot_offset = Vector2( 62.5, 35 )
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Select"
+icon = null
+script = SubResource( 9 )
+[connection signal="continue_clicked" from="Left/Continue" to="." method="_on_Left_clicked"]
+[connection signal="continue_clicked" from="Right/Continue2" to="." method="_on_right_clicked"]

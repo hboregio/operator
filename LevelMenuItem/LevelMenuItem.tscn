@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://LevelMenuItem/LevelMenuItem.gd" type="Script" id=2]
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 2
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 1 )
+
+[node name="LevelMenuItem" type="VBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 200, 312 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 200.0
+margin_bottom = 45.0
+custom_constants/margin_top = 45
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_top = 49.0
+margin_right = 200.0
+margin_bottom = 119.0
+
+[node name="Image" type="Button" parent="CenterContainer"]
+margin_left = 94.0
+margin_top = 25.0
+margin_right = 106.0
+margin_bottom = 45.0
+focus_mode = 0
+disabled = true
+enabled_focus_mode = 0
+flat = true
+
+[node name="PlayButton" parent="CenterContainer" instance=ExtResource( 4 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 62.0
+margin_top = 0.0
+margin_right = 138.0
+margin_bottom = 70.0
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+margin_top = 123.0
+margin_right = 200.0
+margin_bottom = 128.0
+custom_constants/margin_top = 5
+
+[node name="Description" type="Label" parent="."]
+margin_top = 132.0
+margin_right = 200.0
+margin_bottom = 153.0
+rect_min_size = Vector2( 180, 0 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+autowrap = true
+max_lines_visible = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+margin_top = 157.0
+margin_right = 200.0
+margin_bottom = 172.0
+custom_constants/margin_top = 15
+
+[node name="Best" type="Label" parent="."]
+margin_top = 176.0
+margin_right = 200.0
+margin_bottom = 197.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="continue_clicked" from="CenterContainer/PlayButton" to="." method="_on_PlayButton_continue_clicked"]

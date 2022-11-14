@@ -1,0 +1,339 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Shaders/blur.shader" type="Shader" id=1]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GameOverMenu/GameOverMenu.gd" type="Script" id=4]
+[ext_resource path="res://assets/back_small.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/blur_amount = 2.5
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 3
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+outline_size = 2
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 122.866
+margin_top = -205.487
+margin_right = 407.866
+margin_bottom = -145.487
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reason" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 123.366
+margin_top = -132.487
+margin_right = 408.366
+margin_bottom = -87.4866
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.266667, 0.192157, 0.2, 1 )
+text = "Too many passengers left waiting floor XXX"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 72.8657
+margin_top = -23.4866
+margin_right = 456.866
+margin_bottom = 55.5134
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "You safely delivered XXX passengers."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 672.866
+margin_top = 469.513
+margin_right = 880.866
+margin_bottom = 525.513
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryButton" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 168.866
+margin_top = -138.487
+margin_right = 360.866
+margin_bottom = -68.4866
+rect_pivot_offset = Vector2( 123.5, 35 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = " Play Again"
+icon = null
+align = 1
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 512.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.337255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+margin_left = 36.0
+margin_top = 142.0
+margin_right = 462.0
+margin_bottom = 397.0
+color = Color( 1, 1, 1, 0.0823529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 264.0
+margin_top = 471.0
+margin_right = 424.0
+margin_bottom = 495.0
+color = Color( 0.266667, 0.192157, 0.2, 0.423529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect7" type="ColorRect" parent="."]
+margin_left = 264.0
+margin_top = 439.0
+margin_right = 424.0
+margin_bottom = 463.0
+color = Color( 0.266667, 0.192157, 0.2, 0.423529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+margin_left = 264.0
+margin_top = 503.0
+margin_right = 424.0
+margin_bottom = 527.0
+color = Color( 0.266667, 0.192157, 0.2, 0.423529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = 264.0
+margin_top = 535.0
+margin_right = 424.0
+margin_bottom = 559.0
+color = Color( 0.266667, 0.192157, 0.2, 0.423529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats 1" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = 171.0
+margin_right = -258.0
+margin_bottom = 192.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Time played"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = 139.0
+margin_right = -258.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Days played"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats 2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = 203.0
+margin_right = -258.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Floors travelled"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats 3" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = 235.0
+margin_right = -258.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Avg. passenger wait time"
+align = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DaysPlayed" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 139.0
+margin_right = -88.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "9"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimePlayed" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 171.0
+margin_right = -88.0
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "230 seconds"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FloorsTravelled" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 203.0
+margin_right = -88.0
+margin_bottom = 227.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "172"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaitTime" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -248.0
+margin_top = 235.0
+margin_right = -88.0
+margin_bottom = 259.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "53 seconds"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screenshot" type="Sprite" parent="."]
+position = Vector2( 250, 270 )
+region_rect = Rect2( 0, 0, 100, 100 )
+
+[node name="BackButton" parent="." instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 72.0
+margin_bottom = 70.0
+icon = ExtResource( 5 )
+[connection signal="continue_clicked" from="RetryButton" to="." method="_on_RetryButton_clicked"]
+[connection signal="continue_clicked" from="BackButton" to="." method="_on_BackButton_clicked"]

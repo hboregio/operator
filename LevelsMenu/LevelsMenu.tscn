@@ -1,0 +1,175 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://LevelsMenu/ScrollContainer.gd" type="Script" id=1]
+[ext_resource path="res://LevelMenuItem/LevelMenuItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SceneTransitionOut/SceneTransitionOut.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/places/sydney_banner.png" type="Texture" id=4]
+[ext_resource path="res://assets/back_small.png" type="Texture" id=5]
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://LevelsMenu/LevelsMenu.gd" type="Script" id=7]
+[ext_resource path="res://assets/places/london_banner.png" type="Texture" id=8]
+[ext_resource path="res://assets/places/paris_banner.png" type="Texture" id=9]
+[ext_resource path="res://assets/places/berlin_banner.png" type="Texture" id=10]
+[ext_resource path="res://assets/places/rio_banner.png" type="Texture" id=11]
+[ext_resource path="res://assets/places/beijing_banner.png" type="Texture" id=12]
+[ext_resource path="res://assets/places/new_york_banner.png" type="Texture" id=13]
+[ext_resource path="res://Background/Background.tscn" type="PackedScene" id=14]
+[ext_resource path="res://SceneTransition/SceneTransition.tscn" type="PackedScene" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="Theme" id=6]
+HScrollBar/icons/decrement = null
+HScrollBar/icons/decrement_highlight = null
+HScrollBar/icons/increment = null
+HScrollBar/icons/increment_highlight = null
+HScrollBar/styles/grabber = SubResource( 1 )
+HScrollBar/styles/grabber_highlight = SubResource( 2 )
+HScrollBar/styles/grabber_pressed = SubResource( 3 )
+HScrollBar/styles/scroll = SubResource( 4 )
+HScrollBar/styles/scroll_focus = SubResource( 5 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 14 )]
+
+[node name="Line" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.431373 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -911.373
+margin_top = -63.5402
+margin_right = 1040.63
+margin_bottom = -55.5402
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = false
+theme = SubResource( 6 )
+scroll_vertical_enabled = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 2846.0
+margin_bottom = 583.0
+custom_constants/separation = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/HBoxContainer"]
+margin_right = 360.0
+margin_bottom = 583.0
+rect_min_size = Vector2( 360, 0 )
+
+[node name="NYC" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 390.0
+margin_right = 652.0
+margin_bottom = 583.0
+cityName = "NYC"
+cityDescription = "Crazy, busy people. Make sure you deliver everyone on time or else..."
+cityIcon = ExtResource( 13 )
+cityBest = "Deliver 50 passengers"
+enabled = true
+
+[node name="London" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 682.0
+margin_right = 944.0
+margin_bottom = 583.0
+cityName = "London"
+cityDescription = "Is it tea time yet? Not before everyone reaches their destination"
+cityIcon = ExtResource( 8 )
+cityBest = "Deliver 75 passengers in New York to unlock"
+enabled = true
+
+[node name="Rio" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 974.0
+margin_right = 1236.0
+margin_bottom = 583.0
+cityName = "Rio"
+cityDescription = "Full of vibrant, happy people, but get ready for some carnival!"
+cityIcon = ExtResource( 11 )
+cityBest = "Deliver 100 passengers in London to unlock"
+enabled = true
+
+[node name="Berlin" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 1266.0
+margin_right = 1528.0
+margin_bottom = 583.0
+cityName = "Berlin"
+cityDescription = "No fun here. Deliver your passengers efficiently, and move on."
+cityIcon = ExtResource( 10 )
+cityBest = "Deliver 150 passengers in Rio to unlock"
+
+[node name="Paris" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 1558.0
+margin_right = 1820.0
+margin_bottom = 583.0
+cityName = "Paris"
+cityDescription = "Oh-La-La Mon Amour! Deliver fast before you fall in love with the city."
+cityIcon = ExtResource( 9 )
+cityBest = "Deliver 200 passengers in Berlin to unlock"
+
+[node name="Sydney" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 1850.0
+margin_right = 2112.0
+margin_bottom = 583.0
+cityName = "Sydney"
+cityDescription = "Be careful - even down under things can get pretty hectic sometimes."
+cityIcon = ExtResource( 4 )
+cityBest = "Deliver 250 passengers in Paris to unlock"
+
+[node name="Beijing" parent="ScrollContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 2142.0
+margin_right = 2404.0
+margin_bottom = 583.0
+cityName = "Beijing"
+cityDescription = "With over 21 million residents, this is the ultimate test of your skills."
+cityIcon = ExtResource( 12 )
+cityBest = "Deliver 300 passengers in Sydney to unlock"
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScrollContainer/HBoxContainer"]
+margin_left = 2434.0
+margin_right = 2846.0
+margin_bottom = 583.0
+rect_min_size = Vector2( 412, 0 )
+
+[node name="Back" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 54.0
+margin_bottom = 70.0
+text = " "
+icon = ExtResource( 5 )
+
+[node name="SceneTransition" parent="." instance=ExtResource( 15 )]
+visible = false
+mouse_filter = 1
+
+[node name="SceneTransitionExit" parent="." instance=ExtResource( 3 )]
+visible = false
+mouse_filter = 1
+[connection signal="continue_clicked" from="Back" to="." method="_on_Back_clicked"]
+[connection signal="scene_transition_exit_complete" from="SceneTransitionExit" to="." method="_on_SceneTransitionExit_complete"]

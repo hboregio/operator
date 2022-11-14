@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/floor_bg.png" type="Texture" id=2]
+[ext_resource path="res://Floor/Floor.gd" type="Script" id=3]
+[ext_resource path="res://assets/circular_progresspng.png" type="Texture" id=4]
+[ext_resource path="res://assets/shaft.png" type="Texture" id=5]
+[ext_resource path="res://assets/floor_bg_empty.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "AppearIn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Block:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 0.329877, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.15, 1.15 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+outline_size = 2
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "AppearIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.8 ), Vector2( 1.1, 1.1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "DisappearOut"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Floor" type="Node2D"]
+light_mask = 2
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AppearIn = SubResource( 1 )
+
+[node name="ProgressTimer" type="Timer" parent="."]
+wait_time = 45.0
+
+[node name="Group" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Group"]
+margin_left = -240.0
+margin_top = -25.0
+margin_right = -222.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Progress" type="TextureProgress" parent="Group"]
+visible = false
+margin_left = -281.45
+margin_top = -16.0681
+margin_right = -249.45
+margin_bottom = 23.9319
+rounded = true
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0.788235 )
+tint_progress = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Group/Progress"]
+anims/AppearIn = SubResource( 3 )
+anims/DisappearOut = SubResource( 4 )
+
+[node name="Block" type="Node2D" parent="."]
+
+[node name="Background" type="NinePatchRect" parent="Block"]
+margin_left = -200.0
+margin_top = -25.0
+margin_right = 200.0
+margin_bottom = 25.0
+texture = ExtResource( 2 )
+patch_margin_left = 39
+patch_margin_right = 49
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shaft" type="NinePatchRect" parent="Block"]
+modulate = Color( 0.945098, 1, 0.901961, 1 )
+margin_left = -26.0
+margin_top = -25.0
+margin_right = 26.0
+margin_bottom = 25.0
+texture = ExtResource( 5 )
+patch_margin_left = 1
+patch_margin_top = 2
+patch_margin_right = 1
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Roof" type="NinePatchRect" parent="."]
+margin_left = -200.0
+margin_top = -74.8252
+margin_right = 200.0
+margin_bottom = -24.8252
+texture = ExtResource( 6 )
+patch_margin_left = 8
+patch_margin_top = 19
+patch_margin_right = 21
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="ProgressTimer" to="." method="_on_ProgressTimer_timeout"]
+[connection signal="animation_finished" from="Group/Progress/AnimationPlayer" to="." method="_on_Progress_animation_finished"]

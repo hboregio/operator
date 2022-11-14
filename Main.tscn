@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+
+[node name="Main" type="Node2D"]
+position = Vector2( 0, 1 )
+script = ExtResource( 2 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+__meta__ = {
+"_editor_description_": "Passenger spawn timer"
+}
+
+[node name="FloorSpawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="ProgressTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+__meta__ = {
+"_editor_description_": "Controls the hourly time"
+}
+
+[node name="Camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="HUD" parent="." instance=ExtResource( 1 )]
+margin_right = 0.0
+margin_bottom = 0.0
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="FloorSpawnTimer" to="." method="_on_FloorSpawnTimer_timeout"]
+[connection signal="timeout" from="ProgressTimer" to="." method="_on_ProgressTimer_timeout"]

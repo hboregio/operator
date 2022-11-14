@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/clock_circle.png" type="Texture" id=1]
+[ext_resource path="res://assets/clock_line.png" type="Texture" id=2]
+[ext_resource path="res://Clock/Clock.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Rotation"
+length = 72.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 72 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 180.0, 450.0 ]
+}
+
+[node name="Clock" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.266667, 0.192157, 0.2, 1 )
+position = Vector2( -0.0261287, -2.83122e-07 )
+rotation = 3.14159
+scale = Vector2( 3.35998, 0.816687 )
+texture = ExtResource( 2 )
+offset = Vector2( 1.5, -2.23517e-08 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Rotation = SubResource( 1 )
+
+[node name="Circle" type="Sprite" parent="."]
+modulate = Color( 0.266667, 0.192157, 0.2, 1 )
+texture = ExtResource( 1 )

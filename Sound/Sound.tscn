@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://audio/delivered.wav" type="AudioStream" id=1]
+[ext_resource path="res://audio/nakaai_10min.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sound/Sound.gd" type="Script" id=3]
+[ext_resource path="res://audio/out_game_background.ogg" type="AudioStream" id=4]
+
+[node name="Sounds" type="Node"]
+script = ExtResource( 3 )
+
+[node name="InGameFXPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 1 )
+volume_db = -10.0
+pitch_scale = 0.39
+
+[node name="InGameMusicPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 2 )
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="GameStartingAudioTween" type="Tween" parent="."]
+
+[node name="MenuStartingAudioTween" type="Tween" parent="."]
+[connection signal="tween_all_completed" from="GameStartingAudioTween" to="." method="_on_GameStartingAudioTween_tween_all_completed"]
+[connection signal="tween_all_completed" from="MenuStartingAudioTween" to="." method="_on_MenuStartingAudioTween_tween_all_completed"]

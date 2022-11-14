@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Shaders/blur.shader" type="Shader" id=1]
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GamePausedMenu/GamePausedMenu.gd" type="Script" id=3]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/blur_amount = 2.5
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+outline_size = 4
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+font_data = ExtResource( 5 )
+
+[node name="GamePausedMenu" type="Control"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.5
+margin_top = 27.9311
+margin_right = 95.5
+margin_bottom = 67.9311
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -95.5
+margin_top = 112.021
+margin_right = 95.5
+margin_bottom = 152.021
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.0
+margin_top = 26.0
+margin_right = 66.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 63, 38.9474 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Resume"
+icon = null
+align = 1
+script = SubResource( 3 )
+
+[node name="Exit" parent="." instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.5
+margin_top = 96.5789
+margin_right = 82.5
+margin_bottom = 166.579
+rect_pivot_offset = Vector2( 76.5, 38.4211 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Exit Game"
+icon = null
+script = SubResource( 5 )
+
+[node name="GamePaused" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.5
+margin_top = -150.5
+margin_right = 220.5
+margin_bottom = -75.5
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Game Paused"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="continue_clicked" from="Resume" to="." method="_on_Resume_clicked"]
+[connection signal="continue_clicked" from="Exit" to="." method="_on_Exit_clicked"]

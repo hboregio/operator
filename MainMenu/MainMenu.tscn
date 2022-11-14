@@ -1,0 +1,261 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://NextButton/NextButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://montserrat_extrabold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Background/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Elevator/Elevator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SceneTransition/SceneTransition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SceneTransitionOut/SceneTransitionOut.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+outline_size = 4
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[sub_resource type="DynamicFont" id=6]
+size = 60
+outline_size = 4
+outline_color = Color( 0.266667, 0.192157, 0.2, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Button
+
+signal continue_clicked
+
+onready var continueButton = get_node(\".\")
+
+func _on_Continue_pressed():
+	emit_signal(\"continue_clicked\")
+
+func _on_Button_down():
+	continueButton.set_scale (Vector2(0.9, 0.9))
+
+func _on_Button_up():
+	continueButton.set_scale (Vector2(1, 1))
+	emit_signal(\"continue_clicked\")
+"
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 359.0
+margin_top = 165.0
+margin_right = 667.0
+margin_bottom = 240.0
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 359.0
+margin_top = 266.5
+margin_right = 667.0
+margin_bottom = 341.5
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 359.0
+margin_top = 362.5
+margin_right = 667.0
+margin_bottom = 437.5
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 476.0
+margin_top = 526.0
+margin_right = 548.0
+margin_bottom = 566.0
+color = Color( 0.266667, 0.192157, 0.2, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -28.0
+margin_right = 146.0
+custom_fonts/font = SubResource( 1 )
+text = "Operator v 0.1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -142.0
+margin_top = -141.5
+margin_right = 142.0
+margin_bottom = 141.5
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 284.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( 109.63, 37.1264 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+icon = null
+script = SubResource( 3 )
+
+[node name="SettingsButton" parent="VBoxContainer" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_top = 101.0
+margin_right = 284.0
+margin_bottom = 182.0
+rect_pivot_offset = Vector2( 109.63, 37.1264 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Settings"
+icon = null
+script = SubResource( 5 )
+
+[node name="ControlsButton" parent="VBoxContainer" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+margin_left = 0.0
+margin_top = 202.0
+margin_right = 284.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 109.63, 37.1264 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Controls"
+icon = null
+script = SubResource( 7 )
+
+[node name="Exit" parent="." instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -78.0
+margin_top = -93.503
+margin_right = 78.0
+margin_bottom = -12.503
+rect_pivot_offset = Vector2( 109.63, 37.1264 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Exit"
+icon = null
+align = 1
+script = SubResource( 9 )
+
+[node name="SceneTransition" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="SceneTransitionExit" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="Elevator" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 914.821, 453.973 )
+
+[connection signal="continue_clicked" from="VBoxContainer/PlayButton" to="." method="_on_PlayButton_clicked"]
+[connection signal="continue_clicked" from="VBoxContainer/SettingsButton" to="." method="_on_SettingsButton_clicked"]
+[connection signal="continue_clicked" from="VBoxContainer/ControlsButton" to="." method="_on_ControlsButton_clicked"]
+[connection signal="continue_clicked" from="Exit" to="." method="_on_ExitButton_clicked"]
+[connection signal="scene_transition_exit_complete" from="SceneTransitionExit" to="." method="_on_SceneTransitionExit_complete"]

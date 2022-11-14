@@ -1,0 +1,12 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+
+[sub_resource type="AudioEffectBandLimitFilter" id=1]
+resource_name = "BandLimitFilter"
+
+[resource]
+bus/0/solo = true
+bus/0/mute = true
+bus/0/bypass_fx = true
+bus/0/volume_db = 3.2425
+bus/0/effect/0/effect = SubResource( 1 )
+bus/0/effect/0/enabled = false

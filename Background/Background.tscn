@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gradients/gradient_base.tres" type="Texture" id=1]
+
+[node name="Background" type="TextureRect"]
+margin_left = 1024.0
+margin_right = 1624.0
+margin_bottom = 1024.0
+rect_rotation = 90.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
